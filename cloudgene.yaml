@@ -20,4 +20,4 @@ workflow:
   outputs:
     - id: output
       description: Output
-      type: file
+      type: textarea
