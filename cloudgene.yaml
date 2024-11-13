@@ -10,13 +10,12 @@ workflow:
   steps:
     - name: Main
       script: main.nf
-      revision: 0.0.2
+      revision: 0.0.3
 
   inputs:
     - id: input_vcf
       description: Study VCF
-      type: file
-      accept: .gz
+      type: folder
 
   outputs:
     - id: output
