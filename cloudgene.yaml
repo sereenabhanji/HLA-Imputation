@@ -15,9 +15,9 @@ workflow:
   inputs:
     - id: input_vcf
       description: Study VCF
-      type: textarea
+      type: folder
 
   outputs:
     - id: output
       description: Output
-      type: file
+      type: textarea
