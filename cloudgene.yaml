@@ -9,7 +9,7 @@ author: Sereena Bhanji
 workflow:
   steps:
     - name: Main
-      script: nf-hla-imputation/main.nf
+      script: main.nf
       revision: 0.0.0
 
   inputs:
