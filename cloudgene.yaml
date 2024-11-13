@@ -1,5 +1,5 @@
 id: hla-imputation
-name: HLAImputation
+name: HLA Imputation VCS
 description: HLA imputation server with CARTaGENE
 version: 0.0.0
 website: https://github.com/sereenabhanji/hla-imputation
@@ -10,7 +10,7 @@ workflow:
   steps:
     - name: Main
       script: main.nf
-      revision: 0.0.0
+      revision: 0.0.2
 
   inputs:
     - id: input_vcf
