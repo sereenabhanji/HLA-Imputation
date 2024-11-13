@@ -15,7 +15,7 @@ workflow:
   inputs:
     - id: input_vcf
       description: Study VCF
-      type: folder
+      type: file
 
   outputs:
     - id: output
