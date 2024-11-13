@@ -15,9 +15,10 @@ workflow:
   inputs:
     - id: input_vcf
       description: Study VCF
-      type: folder
+      type: file
+      accept: .gz
 
   outputs:
     - id: output
       description: Output
-      type: textarea
+      type: file
