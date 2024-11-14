@@ -10,7 +10,6 @@ workflow:
   steps:
     - name: Main
       script: main.nf
-      revision: 0.0.3
 
   inputs:
     - id: input_vcf
