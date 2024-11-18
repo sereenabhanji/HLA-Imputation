@@ -1,4 +1,4 @@
-#!/usr/bin/env nextflow
+#!/usr/local/bin
 
 /* 
 * Author: Sereena Bhanji <sereena.bhanji@mail.mcgill.ca>
@@ -6,30 +6,34 @@
 * Year: 2024
 */
 
-// params.input_vcf = file('./Panel/CAG_panel.bgl.phased.vcf.gz')
-
-include { bcftools } from 'Users/sereenabhanji/bcftools'
 
 process count_variants {
-	debug true 
+	//debug true 
     
     input:
     path vcf_file
 	
 	output:
-	path 'result.txt'
+	path 'result.txt', emit: results
 
 	script:
 	""" 
-	bcftools stats $vcf_file | awk '/^SN/' | awk '/number of records/ {print \$6}' > result.txt 
+	echo 'Hello world' > result.txt 
 	"""
+
+	// /Users/sereenabhanji/bcftools/bcftools stats $vcf_file | awk '/^SN/' | awk '/number of records/'
 
 }
 
 
 workflow {
+	main:
     study_ch = Channel.fromPath(params.input_vcf, checkIfExists:true) \
     | map { file -> [ file.name.toString().tokenize('.').get(0), file, file + ".tbi"] }
 
 	count_variants(params.input_vcf)
+
+	publish:
+	count_variants.out.results >> 'stats'
+
 }
