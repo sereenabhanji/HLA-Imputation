@@ -14,26 +14,24 @@ process count_variants {
     path vcf_file
 	
 	output:
-	path 'result.txt', emit: results
+	path 'result.txt'
+	publishDir "results/", mode: "copy"
 
 	script:
 	""" 
-	echo 'Hello world' > result.txt 
+	/Users/sereenabhanji/bcftools/bcftools stats $vcf_file | awk '/^SN/' > result.txt 
 	"""
+	// /Users/sereenabhanji/bcftools/bcftools stats $vcf_file | awk '/^SN/' > result.txt 
 
-	// /Users/sereenabhanji/bcftools/bcftools stats $vcf_file | awk '/^SN/' | awk '/number of records/'
+	// 	/Users/sereenabhanji/bcftools/bcftools stats $vcf_file | awk '/^SN/' | awk '/number of records/' > result.txt 
 
 }
 
 
 workflow {
-	main:
     study_ch = Channel.fromPath(params.input_vcf, checkIfExists:true) \
     | map { file -> [ file.name.toString().tokenize('.').get(0), file, file + ".tbi"] }
 
-	count_variants(params.input_vcf)
-
-	publish:
-	count_variants.out.results >> 'stats'
+	count_variants(file(params.input_vcf))
 
 }
