@@ -1,7 +1,7 @@
 id: hla-imputation
 name: HLA Imputation
 description: HLA imputation server with CARTaGENE
-version: 0.0.0
+version: 0.0.1
 website: https://github.com/sereenabhanji/hla-imputation
 author: Sereena Bhanji
 
@@ -14,9 +14,9 @@ workflow:
   inputs:
     - id: input_vcf
       description: Study VCF
-      type: file
+      type: local-file
 
   outputs:
     - id: results
       description: Output
-      type: file
+      type: textarea
