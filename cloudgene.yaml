@@ -12,11 +12,11 @@ workflow:
       script: main.nf
 
   inputs:
-    - id: input_vcf
-      description: Study VCF
-      type: local-file
+    - id: array
+      description: Genotype array data
+      type: folder
 
   outputs:
     - id: results
       description: Output
-      type: textarea
+      type: folder
